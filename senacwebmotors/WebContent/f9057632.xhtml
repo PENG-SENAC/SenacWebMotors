@@ -1,0 +1,75 @@
+<ui:composition template="WEB-INF/template/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<ui:define name="title">Gerenciamento de Clientes</ui:define>
+	<ui:define name="content">
+	<h2>Gerenciamento de Clientes</h2>
+	<div class="container-fluid" style="padding-bottom: 20px">
+		<h4>Cadastrar Cliente</h4>
+		<h:form>
+			<div class="form-group">
+				<label for="nome">Nome</label>
+				<h:inputText value="#{clienteMB.cliente.nome}" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="tipocliente">Tipo Cliente:</label>
+				<h:selectOneMenu id="tipocliente" value="#{clienteMB.cliente.tipoCliente}" class="form-control">
+					<f:selectItems value="#{clienteMB.tiposClientes}" />
+				</h:selectOneMenu>
+			</div>
+			<div class="form-group">
+				<label for="sexoCliente">Sexo</label>
+				<h:selectOneRadio id="sexoCliente" value="#{clienteMB.cliente.sexo}" layout="pageDirection">
+					<f:selectItems value="#{clienteMB.sexos}" />
+				</h:selectOneRadio>
+			</div>
+			<div class="form-group">
+				<label for="dataNascimento">Data de Nascimento</label>
+				<h:inputText id="dataNascimento" value="#{clienteMB.cliente.dataNascimento}" class="form-control">
+					<f:convertDateTime pattern="dd/MM/yyyy" dateStyle="dd/MM/yyyy" />
+				</h:inputText>
+			</div>
+			<div class="form-group">
+				<label for="gostos">Gostos Pessoais</label>
+				<h:inputTextarea id="gostos"
+					value="#{clienteMB.cliente.gostosPessoais}" rows="5" cols="40"
+					class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="senha">Senha</label>
+				<h:inputSecret id="senha" value="#{clienteMB.cliente.senha}"
+					class="form-control" />
+			</div>
+				<h:commandButton action="#{clienteMB.grava()}" value="Gravar" class="btn btn-default"/>
+		</h:form>
+	</div>
+	<div class="container-fluid" >
+		<h4>Clientes cadastrados</h4>
+		<h:dataTable value="#{clienteMB.lista}" var="cliente" class="table table-striped">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{cliente.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{cliente.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Sexo</f:facet>
+				<h:outputText value="#{cliente.sexo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Data Nascimento</f:facet>
+				<h:outputText value="#{cliente.dataNascimento}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Tipo</f:facet>
+				<h:outputText value="#{cliente.tipoCliente}" />
+			</h:column>
+		</h:dataTable>	
+	</div>	
+	</ui:define>
+</ui:composition>

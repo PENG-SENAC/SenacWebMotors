@@ -1,0 +1,56 @@
+<ui:composition template="WEB-INF/template/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<ui:define name="title">Gerenciamento de Funcionários</ui:define>
+	<ui:define name="content">
+	<h2>Gerenciamento de Funcionários</h2>
+	<div class="container-fluid" style="padding-bottom: 20px">
+		<h4>Cadastrar Funcionário</h4>
+		<h:form>
+			<div class="form-group">
+				<label for="nome">Nome</label>
+				<h:inputText value="#{funcionarioMB.funcionario.nome}" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="funcao">Função</label>
+				<h:selectOneMenu id="funcao"
+					value="#{funcionarioMB.funcionario.funcao}" class="form-control">
+					<f:selectItems value="#{funcionarioMB.funcoesFuncionarios}" />
+				</h:selectOneMenu>
+			</div>
+			<div class="form-group">
+				<label for="curriculo">Currículo</label>
+				<h:inputTextarea id="curriculo"
+					value="#{funcionarioMB.funcionario.curriculo}" rows="5" cols="40"
+					class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="senha">Senha</label>
+				<h:inputSecret id="senha"  value="#{funcionarioMB.funcionario.senha}"
+					class="form-control" />
+			</div>
+				<h:commandButton action="#{clienteMB.grava()}" value="Gravar" class="btn btn-default"/>
+		</h:form>
+	</div>
+	<div class="container-fluid" >
+			<h4>Funcionarios cadastrados</h4>
+			<h:dataTable value="#{funcionarioMB.lista}" var="funcionario" class="table table-striped">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{funcionario.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{funcionario.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Função</f:facet>
+					<h:outputText value="#{funcionario.funcao}" />
+				</h:column>
+			</h:dataTable>
+	</div>	
+	</ui:define>
+</ui:composition>
