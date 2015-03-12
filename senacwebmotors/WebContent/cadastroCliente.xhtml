@@ -15,12 +15,12 @@
 				<h:inputText value="#{clienteMB.cliente.nome}" class="form-control" />
 			</div>
 			<div class="form-group">
-				<label for="tipocliente">Tipo Cliente:</label>
+				<label for="tipocliente">Tipo Cliente</label>
 				<h:selectOneMenu id="tipocliente" value="#{clienteMB.cliente.tipoCliente}" class="form-control">
 					<f:selectItems value="#{clienteMB.tiposClientes}" />
 				</h:selectOneMenu>
 			</div>
-			<div class="form-group">
+			<div class="form-group" >
 				<label for="sexoCliente">Sexo</label>
 				<h:selectOneRadio id="sexoCliente" value="#{clienteMB.cliente.sexo}" layout="pageDirection">
 					<f:selectItems value="#{clienteMB.sexos}" />
