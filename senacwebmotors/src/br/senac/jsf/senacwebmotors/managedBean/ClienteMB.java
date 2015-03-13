@@ -6,8 +6,6 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.NoneScoped;
-import javax.faces.bean.RequestScoped;
 
 import br.senac.jsf.senacwebmotors.dao.ClienteDAO;
 import br.senac.jsf.senacwebmotors.modelo.Cliente;
